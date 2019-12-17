@@ -1,100 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { MdAddShoppingCart } from 'react-icons/md';
+import { bindActionCreators } from 'redux';
 
+import { formatPrice } from '../../util/format';
+import api from '../../services/api';
 import { ProductList } from './styles';
+import * as CartActions from '../../store/modules/cart/actions';
 
-export default function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-venetto-casual-caminhada-leve-confortavel-masculino/06/EPL-0186-006/EPL-0186-006_detalhe2.jpg?ims=326x"
-          alt="Tênis"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$129,90</span>
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
+class Home extends Component {
+  state = {
+    products: [],
+  };
 
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-venetto-casual-caminhada-leve-confortavel-masculino/06/EPL-0186-006/EPL-0186-006_detalhe2.jpg?ims=326x"
-          alt="Tênis"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$129,90</span>
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
+  async componentDidMount() {
+    const response = await api.get(`/products`);
+    const products = response.data.map(product => ({
+      ...product,
+      priceFormatted: formatPrice(product.price),
+    }));
+    this.setState({ products });
+  }
 
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-venetto-casual-caminhada-leve-confortavel-masculino/06/EPL-0186-006/EPL-0186-006_detalhe2.jpg?ims=326x"
-          alt="Tênis"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$129,90</span>
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
+  handleAddProduct = id => {
+    const { addToCartRequest } = this.props;
+    addToCartRequest(id);
+  };
 
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-venetto-casual-caminhada-leve-confortavel-masculino/06/EPL-0186-006/EPL-0186-006_detalhe2.jpg?ims=326x"
-          alt="Tênis"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$129,90</span>
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-venetto-casual-caminhada-leve-confortavel-masculino/06/EPL-0186-006/EPL-0186-006_detalhe2.jpg?ims=326x"
-          alt="Tênis"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$129,90</span>
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-
-      <li>
-        <img
-          src="https://static.netshoes.com.br/produtos/tenis-venetto-casual-caminhada-leve-confortavel-masculino/06/EPL-0186-006/EPL-0186-006_detalhe2.jpg?ims=326x"
-          alt="Tênis"
-        />
-        <strong>Tênis muito legal</strong>
-        <span>R$129,90</span>
-        <button type="button">
-          <div>
-            <MdAddShoppingCart size={16} color="#FFF" /> 3
-          </div>
-          <span>ADICIONAR AO CARRINHO</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+  render() {
+    const { products } = this.state;
+    const { amount } = this.props;
+    return (
+      <ProductList>
+        {products.map(product => (
+          <li key={product.id}>
+            <img src={product.image} alt={product.title} />
+            <strong>{product.title}</strong>
+            <span>{product.priceFormatted}</span>
+            <button
+              type="button"
+              onClick={() => this.handleAddProduct(product.id)}
+            >
+              <div>
+                <MdAddShoppingCart size={16} color="#FFF" />
+                {amount[product.id] || 0}
+              </div>
+              <span>ADICIONAR AO CARRINHO</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  amount: state.cart.reduce((amount, product) => {
+    amount[product.id] = product.amount;
+    return amount;
+  }, {}),
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(CartActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
