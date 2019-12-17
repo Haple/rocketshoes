@@ -1,69 +1,148 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h1 align="center">
+    <img alt="React RocketShoes" src=".github/logo.png" />
+    <br>
+    Rocketshoes
+</h1>
 
-## Available Scripts
+<h4 align="center">
+  Shoes store app to practice ReactJs and Redux.
+</h4>
+<p align="center">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/haple/rocketshoes.svg">
 
-In the project directory, you can run:
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/haple/rocketshoes.svg">
 
-### `yarn start`
+  <!--FALTA COLOCAR A QUALIDADE DE CÓDIGO-->
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/haple/rocketshoes.svg">
+  <a href="https://github.com/haple/rocketshoes.svg/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/haple/rocketshoes.svg">
+  </a>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  <a href="https://github.com/haple/rocketshoes.svg/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/haple/rocketshoes.svg">
+  </a>
 
-### `yarn test`
+  <img alt="GitHub" src="https://img.shields.io/github/license/haple/rocketshoes.svg">
+</p>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<p align="center">
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#requirements">Requirements</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#install">Install</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#running">Running</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#root-config-files">Root config files</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#license">License</a>
 
-### `yarn build`
+</p>
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img alt="Demo" src=".github/demo.gif" />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies
 
-### `yarn eject`
+This project was developed with the following technologies:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-  [ReactJS](https://reactjs.org/)
+-  [Redux](https://redux.js.org/)
+-  [Redux-Saga](https://redux-saga.js.org/)
+-  [React Router v4](https://github.com/ReactTraining/react-router)
+-  [Axios](https://github.com/axios/axios)
+-  [History](https://www.npmjs.com/package/history)
+-  [Immer](https://github.com/immerjs/immer)
+-  [Polished](https://polished.js.org/)
+-  [React-Toastify](https://fkhadra.github.io/react-toastify/)
+-  [styled-components](https://www.styled-components.com/)
+-  [React-Icons](https://react-icons.netlify.com/)
+-  [react-loading-skeleton](https://github.com/dvtng/react-loading-skeleton)
+-  [react-loader-spinner](https://github.com/mhnpd/react-loader-spinner)
+-  [json-server](https://github.com/typicode/json-server)
+-  [Reactotron](https://infinite.red/reactotron)
+-  [VS Code][vc] with [EditorConfig][vceditconfig] and [ESLint][vceslint]
+---
+## Requirements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+For development, you will only need Node.js and a node global package, Yarn, installed in your environment.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Node
+- #### Node installation on Windows
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  Just go on [official Node.js website](https://nodejs.org/) and download the installer.
+Also, be sure to have `git` available in your PATH, `npm` might need it (You can find git [here](https://git-scm.com/)).
 
-## Learn More
+- #### Node installation on Ubuntu
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  You can install nodejs and npm easily with apt install, just run the following commands.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+      $ sudo apt install nodejs
+      $ sudo apt install npm
 
-### Code Splitting
+- #### Other Operating Systems
+  You can find more information about the installation on the [official Node.js website](https://nodejs.org/) and the [official NPM website](https://npmjs.org/).
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+If the installation was successful, you should be able to run the following command.
 
-### Analyzing the Bundle Size
+    $ node --version
+    v8.11.3
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+    $ npm --version
+    6.1.0
 
-### Making a Progressive Web App
+If you need to update `npm`, you can make it using `npm`! Cool right? After running the following command, just open again the command line and be happy.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+    $ npm install npm -g
 
-### Advanced Configuration
+###
+### Yarn installation
+  After installing node, this project will need yarn too, so just run the following command.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+      $ npm install -g yarn
 
-### Deployment
+---
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Install
 
-### `yarn build` fails to minify
+    $ git clone https://github.com/haple/rocketshoes
+    $ cd rocketshoes
+    $ yarn install
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# rocketshoes
+
+## Running
+    # Run the following command to run the fake local api server:
+    $ yarn api:fake
+    # Open other terminal and start the application:
+    $ yarn start
+
+
+
+## Root config files
+
+  ### .editorconfig
+  Even whether your team of devs work with other code editors than not VS Code they this file preserve some code style configs.
+
+  ### .eslintrc.js
+  Used together with ESLint VS Code extension. ESLint statically analyzes your Javascript code to quickly find problems, which can be automatically fixed in most cases. Also used to force a code style in a dev team.
+
+  ### .gitignore
+  The files and folders listed in this file are ignored by git. Folders like *node_modules* and environment files are good exemple of things that should not be in version control.
+
+  ### .prettierrc
+  Used to custom the Prettier code style configs.
+
+  ### server.json
+  This file contain data used by the fake api server.
+
+## License
+This project is under the MIT license. See the [LICENSE](https://github.com/haple/rocketshoes/blob/master/LICENSE) for more information.
+
+
+## Simple build for production
+
+    $ yarn build
+
+
+[nodejs]: https://nodejs.org/
+[yarn]: https://yarnpkg.com/
+[vc]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
