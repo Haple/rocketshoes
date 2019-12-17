@@ -31,6 +31,7 @@ module.exports = {
       { extensions: ['.js', '.jsx'] }
     ],
     'import/prefer-default-export': 'off',
-    'react/state-in-constructor': 'off'
+    'react/state-in-constructor': 'off',
+    'no-console': ['error', { allow: ['tron'] }]
   },
 };
