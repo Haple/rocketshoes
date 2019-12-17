@@ -30,7 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "api:fake": "json-server server.json -p 3333"
+    "api:fake": "json-server db.json -p 3333"
   },
   "eslintConfig": {
     "extends": "react-app"
